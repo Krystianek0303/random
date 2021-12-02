@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Random numbers JS</title>
+	<style type="text/css">
+		button {
+			display: block;
+			margin:  0 auto;
+			background-color: #ffff;
+			border: 3px solid black;
+			font-size: 20px;
+		}
+ 		
+ 		div {
+ 			margin: auto;
+ 			width: 50%;
+ 		}
+		button:hover {
+			background-color: red;
+			color: blue;
+		}
+		#tab {
+			margin: auto;
+			width: 50%;
+			text-align: center;
+			margin-right: auto;
+			margin-left: auto;
+		}
+ 
+		#tab td, tr, th {
+			margin-top: 30px;
+			border: 3px solid black;
+			text-align: center !important;
+			font-size: 20px;
+			background-color: grey;
+		}
+ 
+	</style>
+</head>
+<body>
+	<div>
+		<h2>Generator 20 losowych liczb w zakresie od 1 do 100 z sortowaniem rosnącym!</h2>	
+	</div>
+	<div>
+		<h3>Aby wylosować liczby naciśnij przycisk!</h3>
+		<button onclick="startprogram()">Losuj</button>
+	</div>
+	<div>
+		<table id="tab" style="display: none;">
+			<tr>
+				<th>L.P</th>
+				<th>Parzyste</th>
+				<th>Nieparzyste</th>
+			</tr>
+ 
+	</div>
+	<script>
+ 
+		function startprogram() {
+            var tab = document.getElementById("tab");
+            tab.innerHTML= ("<tr> <th>L.P</th><th>Parzyste</th><th>Nieparzyste</th></tr>")
+			const los= new Array (19);
+ 
+			function getRandomInt(min, max) {
+			  min = Math.ceil(min);
+			  max = Math.floor(max);
+			  return Math.floor(Math.random() * (max - min)) + min; 
+			}
+ 
+		 for (i = 0; i<20 ;i++) {
+		   var a=getRandomInt(1, 100);
+		   los[i]=a;
+		}
+ 
+		los == los.sort(function(a, b){return a-b});
+        
+      
+ 
+		for (var a = 0; a < 20; a += 1) {
+			if (los[a] % 2 === 0) {
+				tab.innerHTML += ( "<tr><td>"+a+"</td><td>" + los[a] + "</td><td>-</td></tr>");
+			} else {
+				tab.innerHTML += ("<tr><td>"+a+"</td><td>-</td><td>" + los[a] + "</td></tr>");
+			}
+		}
+		tab.style.display = "table";
+		return;
+	}
+		//const button = document.querySelector("button");
+		//button.addEventListener("click", startprogram;
+	</script>
+</table>
+</body>
+</html>
